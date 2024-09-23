@@ -1,23 +1,23 @@
 #include<stdio.h>
 int main(){
     int input, go_to_work, easy_number;
-    go_to_work = scanf("%d", &input);
-    if (go_to_work != 0 && input > 1){
-        easy_number = 1;
-        for(int i = 2; i*i <= input; i++){
-            if(input % i == 0){
-                easy_number = 0;
-                break; 
+    go_to_work = scanf("%d", &input); // Получаем число, которое нужно проверить. input = число, go_to_work = проверка на кооректный ввод
+    if (go_to_work != 0 && input > 1){ // Проверяем, что ввод был корректный и что введенное число больше 1
+        easy_number = 1; // Вводим флаг, означающий, что введенное число простое
+        for(int i = 2; i*i <= input; i++){ // Запускаем цикл для поиска делителя у введенного числа
+            if(input % i == 0){ // Если нашли делитель
+                easy_number = 0; // Присваиваем флагу значение ложь, ведь введенное число не простое
+                break; // Вылетаем из цикла
             }
         }    
-        if(easy_number){
+        if(easy_number){ // Проверям флаг. Если он все еще истина, выводим YES
             printf("YES");
         }
-        else{
+        else{ // В противном случае выводим NO
             printf("NO");
         }    
     }
-    else{
+    else{ // Если был не корректный ввод или введенное число было меньше или равно 1, выводим ERROR
         printf("ERROR");
     }
     return 0;
