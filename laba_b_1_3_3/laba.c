@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <malloc.h>
 #include <locale.h>
 
 long factorial(long number){
@@ -33,47 +32,43 @@ double absolute(double number){
 int main(){
     float x, eps;
     double element, func, summ;
-    int i, minus_or_plus;
+    int i, x_is_number, eps_is_number;
 
     setlocale(0,"");
     printf("Введите вещественное число x для функции cos(x): ");
-    scanf("%f",&x);
+    x_is_number = scanf("%f",&x);
     printf("Введите положительное вещественное число эпсилон: ");
-    scanf("%f",&eps);
+    eps_is_number = scanf("%f",&eps);
 
-    if(eps > 0){
-        i = 2;
-        func = 1;        
-        element = (power(x,2) / factorial(2));
-        func -= element;
-        minus_or_plus = 0;
-        summ = 0;
+    if(x_is_number && eps_is_number){
+        if(eps > 0){
+            i = 2;
+            func = 1;        
+            element = -(power(x,2) / factorial(2));
+            func += element;
+            summ = 0;
 
-        while(absolute(element) >= eps){
-            i += 2;
-            element = (element/(i * (i-1)) * power(x,2));
-            summ += element;
-            if (minus_or_plus){
-                func -= element;
-                minus_or_plus = 0;
-            }
-            else{
+            while(absolute(element) >= eps){
+                i += 2;
+                element = -(element/(i * (i-1)) * power(x,2));
+                summ += absolute(element);
                 func += element;
-                minus_or_plus = 1;
             }
+
+            printf("Значение x: %f\n", x);
+            printf("Значение эпсилон: %f\n", eps);
+            printf("Значение суммы ряда: %f\n", summ);
+            printf("Значение cos(x): %f\n", func);
+            printf("Абсолютное значение последнего члена ряда: %f\n", absolute(element));
+            printf("Разность суммы ряда и cos(x): %f\n", summ - func);
+
         }
-
-        printf("Значение x: %f\n", x);
-        printf("Значение эпсилон: %f\n", eps);
-        printf("Значение суммы ряда: %f\n", summ);
-        printf("Значение cos(x): %f\n", func);
-        printf("Абсолютное значение последнего члена ряда: %f\n", absolute(element));
-        printf("Разность суммы ряда и cos(x): %f\n", summ - func);
-        printf("%d", i);
-
+        else{
+            printf("ERROR: Число эпсилон не может быть отрицательным");
+        }
     }
     else{
-        printf("ERROR: Число эпсилон не может быть отрицательным");
-    }    
+        printf("ERROR: Введенные значения не могут быть переданы x и эпсилон");
+    }
     return 0;
 }
