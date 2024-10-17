@@ -65,5 +65,10 @@ int main(){
 
     printf("%d", max_loc_diag_summ);
 
+    for(int i = 0; i < size; i++){
+        free(din_matr[i]);
+    }
+    free(din_matr);    
+
     return 0;
 }    

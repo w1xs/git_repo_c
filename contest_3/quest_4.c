@@ -74,7 +74,12 @@ int main(){
     }
     else{
         printf("NO");
-    }    
+    }
+
+    for(int i = 0; i < size; i++){
+        free(din_matr[i]);
+    }
+    free(din_matr);        
 
     return 0;
 }

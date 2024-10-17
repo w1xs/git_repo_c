@@ -42,5 +42,11 @@ int main(){
     }
     
     printf("%d", count_sedl);
+
+    for(int i = 0; i < str; i++){
+        free(din_matr[i]);
+    }
+    free(din_matr);
+
     return 0;
 }

@@ -43,7 +43,12 @@ int main(){
             printf("%d ", din_matr[i][j]);
         }
         printf("\n");
-    }        
+    }
+
+    for(int i = 0; i < str; i++){
+        free(din_matr[i]);
+    }
+    free(din_matr);        
 
     return 0;
 }
