@@ -127,5 +127,9 @@ void main(){
     printf("Матрица C:\n");
     output_matrix(matrix_C, size);
     
+    free_memory(matrix_A, size);
+    free_memory(matrix_B, size);
+    free_memory(matrix_C, size);
+
     return;
 }
