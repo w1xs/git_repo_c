@@ -27,7 +27,7 @@ void output_matrix(float **matrix, int size){
 
 // void take_memory(float **matrix, int size){
 //     int i;
-//     matrix = (float**)malloc(size * sizeof(float));
+//     matrix = (float**)malloc(size * sizeof(float*));
 //     for(i = 0; i < size; i++){
 //         matrix[i] = (float*)malloc(size * sizeof(float)); 
 //     }
@@ -52,7 +52,7 @@ void summ_matrix_with_matrix_E(float **matrix, int size){
     return;
 }
 
-void multiplier_matrix(const float **matrix_1, const float **matrix_2, float **res_matrix, int size){
+void multiplier_matrix(float **matrix_1, float **matrix_2, float **res_matrix, int size){
     float el_in_res_matr;
     for(int i = 0; i < size; i++){
         for(int j = 0; j < size; j++){
@@ -66,7 +66,7 @@ void multiplier_matrix(const float **matrix_1, const float **matrix_2, float **r
     return;
 }
 
-void rotate_matrix_on_180(const float **matrix_base, float **res_matrix, int size){
+void rotate_matrix_on_180(float **matrix_base, float **res_matrix, int size){
     int i, j;
     for(j = 0; j < size; j++){
         for(i = 0; i < size; i++){
@@ -87,15 +87,15 @@ void main(){
         return;
     }
 
-    matrix_A = (float**)malloc(size * sizeof(float));
+    matrix_A = (float**)malloc(size * sizeof(float*));
     for(int i = 0; i < size; i++){
         matrix_A[i] = (float*)malloc(size * sizeof(float));
     }
-    matrix_B = (float**)malloc(size * sizeof(float));
+    matrix_B = (float**)malloc(size * sizeof(float*));
     for(int i = 0; i < size; i++){
         matrix_B[i] = (float*)malloc(size * sizeof(float));
     }
-    matrix_C = (float**)malloc(size * sizeof(float));
+    matrix_C = (float**)malloc(size * sizeof(float*));
     for(int i = 0; i < size; i++){
         matrix_C[i] = (float*)malloc(size * sizeof(float));
     }
