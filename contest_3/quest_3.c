@@ -6,7 +6,7 @@ int main(){
     int str, column, min_summ, local_summ;
 
     scanf("%d %d", &str, &column);
-    din_matr = (int**)malloc(str * sizeof(int));
+    din_matr = (int**)malloc(str * sizeof(int*));
     for(int i = 0; i < str; i++){
         din_matr[i] = (int*)malloc(column * sizeof(int));
         for(int j = 0; j < column; j++){
@@ -29,7 +29,7 @@ int main(){
             for(int j = 0; j < str; j++){
                 local_summ += din_matr[j][i];
             }
-            printf("%d ", local_summ);
+            // printf("%d ", local_summ);
             if(local_summ < min_summ){
                 min_summ = local_summ;
             }
@@ -41,7 +41,7 @@ int main(){
                 local_summ += din_matr[j][i];
             }
             if(local_summ == min_summ){
-                printf("\n%d ", i);
+                printf("%d ", i);
             }
         }        
 
