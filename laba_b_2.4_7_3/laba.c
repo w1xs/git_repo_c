@@ -2,6 +2,8 @@
 #include<malloc.h>
 #include <locale.h>
 
+// При подсчете матрицы C матрица B меняться не должна. Хер его знает как это сделать, потому что у меня всего 3 массива доступны, подумай потом 
+
 int input_matrix(float **matrix, int size){
     int i, j;
     for(i = 0; i < size; i++){
