@@ -52,13 +52,18 @@ void summ_matrix_with_matrix_E(float **matrix, int size){
     return;
 }
 
-void multiplier_matrix(const float **matrix_1, const float **matrix_2, float **res_matrix, int size){
+void multiplier_matrix(float **matrix_1,float **matrix_2, float **res_matrix, int size){
     float el_in_res_matr;
     for(int i = 0; i < size; i++){
         for(int j = 0; j < size; j++){
             el_in_res_matr = 0;
             for(int k = 0; k < size; k++){
-                el_in_res_matr += (matrix_1[i][k] * matrix_2[k][j]);
+                if(j == k){
+                    el_in_res_matr += (matrix_1[i][k] * (matrix_2[k][j] + 1));
+                }
+                else{
+                    el_in_res_matr += (matrix_1[i][k] * matrix_2[k][j]);
+                }               
             }
             res_matrix[i][j] = el_in_res_matr;
         } 
@@ -66,7 +71,7 @@ void multiplier_matrix(const float **matrix_1, const float **matrix_2, float **r
     return;
 }
 
-void rotate_matrix_on_180(const float **matrix_base, float **res_matrix, int size){
+void rotate_matrix_on_180(float **matrix_base, float **res_matrix, int size){
     int i, j;
     for(j = 0; j < size; j++){
         for(i = 0; i < size; i++){
@@ -87,15 +92,15 @@ void main(){
         return;
     }
 
-    matrix_A = (float**)malloc(size * sizeof(float));
+    matrix_A = (float**)malloc(size * sizeof(float*));
     for(int i = 0; i < size; i++){
         matrix_A[i] = (float*)malloc(size * sizeof(float));
     }
-    matrix_B = (float**)malloc(size * sizeof(float));
+    matrix_B = (float**)malloc(size * sizeof(float*));
     for(int i = 0; i < size; i++){
         matrix_B[i] = (float*)malloc(size * sizeof(float));
     }
-    matrix_C = (float**)malloc(size * sizeof(float));
+    matrix_C = (float**)malloc(size * sizeof(float*));
     for(int i = 0; i < size; i++){
         matrix_C[i] = (float*)malloc(size * sizeof(float));
     }
@@ -114,16 +119,13 @@ void main(){
     }
 
     rotate_matrix_on_180(matrix_A, matrix_B, size);
-    
-    printf("Матрица A:\n");
-    output_matrix(matrix_A, size);
-    printf("Матрица B:\n");
-    output_matrix(matrix_B, size);
-
-    summ_matrix_with_matrix_E(matrix_B, size);
     multiplier_matrix(matrix_A, matrix_B, matrix_C, size);
     summ_matrix_with_matrix_E(matrix_C, size);
 
+    printf("Матрица A:\n");
+    output_matrix(matrix_A, size);
+    printf("Матрица B:\n");
+    output_matrix(matrix_B, size);    
     printf("Матрица C:\n");
     output_matrix(matrix_C, size);
     
