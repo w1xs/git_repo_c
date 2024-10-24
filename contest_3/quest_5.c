@@ -8,7 +8,7 @@ int main(){
     int flag;
 
     scanf("%d %d", &str, &column);
-    din_matr = (int**)malloc(str * sizeof(int));
+    din_matr = (int**)malloc(str * sizeof(int*));
     for(int i = 0; i < str; i++){
         din_matr[i] = (int*)malloc(column * sizeof(int));
         for(int j = 0; j < column; j++){

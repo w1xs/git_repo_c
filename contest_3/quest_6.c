@@ -7,7 +7,7 @@ int main(){
     int max_loc_diag_summ, count_numbers;
 
     scanf("%d", &size);
-    din_matr = (int**)malloc(size * sizeof(int));
+    din_matr = (int**)malloc(size * sizeof(int*));
     for(int i = 0; i < size; i++){
         din_matr[i] = (int*)malloc(size * sizeof(int));
         for(int j = 0; j < size; j++){

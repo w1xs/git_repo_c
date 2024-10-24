@@ -2,6 +2,8 @@
 #include<malloc.h>
 #include <locale.h>
 
+// При подсчете матрицы C матрица B меняться не должна. Хер его знает как это сделать, потому что у меня всего 3 массива доступны, подумай потом 
+
 int input_matrix(float **matrix, int size){
     int i, j;
     for(i = 0; i < size; i++){
@@ -27,7 +29,7 @@ void output_matrix(float **matrix, int size){
 
 // void take_memory(float **matrix, int size){
 //     int i;
-//     matrix = (float**)malloc(size * sizeof(float));
+//     matrix = (float**)malloc(size * sizeof(float*));
 //     for(i = 0; i < size; i++){
 //         matrix[i] = (float*)malloc(size * sizeof(float)); 
 //     }
@@ -52,7 +54,7 @@ void summ_matrix_with_matrix_E(float **matrix, int size){
     return;
 }
 
-void multiplier_matrix(float **matrix_1,float **matrix_2, float **res_matrix, int size){
+void multiplier_matrix(const float **matrix_1, const float **matrix_2, float **res_matrix, int size){
     float el_in_res_matr;
     for(int i = 0; i < size; i++){
         for(int j = 0; j < size; j++){
